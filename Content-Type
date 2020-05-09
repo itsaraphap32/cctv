@@ -4,34 +4,26 @@ $email = $_POST['email'];
 $phone = $_POST['phone'];
 $lineid = $_POST['lineid'];
 $mesg = $_POST['mesg'];
-
 $message = $mesg."\n".'จาก: '.$name."\n".'อีเมล์: '.$email."\n".'Phone: '.$phone."\n".'Line ID: '.$lineid;
-
 if($name<>"" || $email <> "" || $mesg <> "") {
-	
 	sendlinemesg();
-
 	header('Content-Type: text/html; charset=utf-8');
 	$res = notify_message($message);
 	echo "<center>l;ส่งข้อความเรียบร้อยแล้ว</center>";
 } else {
 	echo "<center>Error: กรุณากรอกข้อมูลให้ครบถ้วน</center>";
 }
-
 function sendlinemesg() {
-	
     define('LINE_API',"https://notify-api.line.me/api/notify");
-	define('LINE_TOKEN','ใส่ TOKEN ของท่าน');
-
+	define('LINE_TOKEN','E4kY9OOTefLuZ7I6Djoxlu3Zph8H9oPKIHsb60dNIY4.');
 	function notify_message($message){
-
 		$queryData = array('message' => $message);
 		$queryData = http_build_query($queryData,'','&');
 		$headerOptions = array(
 			'http'=>array(
 				'method'=>'POST',
 				'header'=> "Content-Type: application/x-www-form-urlencoded\r\n"
-						."Authorization: Bearer ".OApAamJX8zoxBX5OsFF7BfGIUw9u0w0P9aYI90k9DcF."\r\n"
+						."Authorization: Bearer ".E4kY9OOTefLuZ7I6Djoxlu3Zph8H9oPKIHsb60dNIY4."\r\n"
 						."Content-Length: ".strlen($queryData)."\r\n",
 				'content' => $queryData
 			)
